@@ -35,45 +35,52 @@ namespace EqualExperts_Part2Test
             PageFactory.InitElements(driver, reservationPage);
 
             //Local Variables
-            string firstNameText = "first_" + DateTime.Now.ToString("yyyy_MM_dd").ToString();
-            string lastNameText = "last_" + DateTime.Now.ToString("yyyy_MM_dd").ToString();
+            string firstNameText = "first_" + DateTime.Now.ToString("hh_mm_ss").ToString();
+            string lastNameText = "last_" + DateTime.Now.ToString("hh_mm_ss").ToString();
             string priceText = "150";
             string depositStatus = "true";
             string checkInDate = DateTime.Now.ToString("yyyy-MM-dd");
             string checkoutDate = DateTime.Now.AddDays(3).ToString("yyyy-MM-dd");
 
-            //Booking Creation - Start
-            reservationPage.pageHeaderDisplayed();
+            try
+            {
+                //Booking Creation - Start
+                reservationPage.pageHeaderDisplayed();
 
-            reservationPage.enterFirstName(firstNameText);
+                reservationPage.enterFirstName(firstNameText);
 
-            reservationPage.enterLastname(lastNameText);
+                reservationPage.enterLastname(lastNameText);
 
-            reservationPage.enterTotalPrice(priceText);
+                reservationPage.enterTotalPrice(priceText);
 
-            reservationPage.selectDepositPaid(depositStatus);
+                reservationPage.selectDepositPaid(depositStatus);
 
-            reservationPage.enterCheckInDate(checkInDate);
+                reservationPage.enterCheckInDate(checkInDate);
 
-            reservationPage.enterCheckOutDate(checkoutDate);
+                reservationPage.enterCheckOutDate(checkoutDate);
 
-            reservationPage.clickCreateBooking();
+                reservationPage.clickCreateBooking();
 
-            //Booking Creation - End
+                //Booking Creation - End
 
-            //Verify booking is created - Begin
+                //Verify booking is created - Begin
 
-            Assert.IsTrue(reservationPage.firstNameDisplay(firstNameText).Displayed);
+                Assert.IsTrue(reservationPage.firstNameDisplay(firstNameText).Displayed);
 
-            string bookingId = reservationPage.bookingIdCreated(firstNameText);
-            Assert.IsNotNull(bookingId);
+                string bookingId = reservationPage.bookingIdCreated(firstNameText);
+                Assert.IsNotNull(bookingId);
 
-            //Verify booking is created - End
+                //Verify booking is created - End
 
-            // Delete the booking
+                // Delete the booking
 
-            reservationPage.clickDeleteButton(bookingId);
-
+                reservationPage.clickDeleteButton(bookingId);
+            }
+            catch (Exception expection)
+            {
+                Console.WriteLine(expection.StackTrace);
+            }
+          
         }
 
         [TestCleanup]
