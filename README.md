@@ -21,9 +21,7 @@ https://visualstudio.microsoft.com/
 
 Alternatively use MSBuild and MsTest to execute the solution via command line
 
-MSBuild.exe **MYPROJ**.sln 
-/p:outdir="Z:\output\\",OutputPath="Z:\output\\",webprojectoutputdir="Z:\output\\",configuration=DEBUG 
-/t:Clean;Build 
+MSBuild.exe **MYPROJ**.sln /p:outdir="Z:\output\\",OutputPath="Z:\output\\",webprojectoutputdir="Z:\output\\",configuration=DEBUG  /t:Clean;Build 
 
 MSTest /testcontainer:\**MYPROJ**.sln\Tests\Debug\proj.dll
 
