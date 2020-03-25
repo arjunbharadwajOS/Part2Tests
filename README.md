@@ -13,6 +13,19 @@
 ## Unit Testing Framework: 
   
   MSTest Framework
+  
+## Execution Instructions
+
+Open the solution file (.sln) using Visual Studio editor to build and execute the test methods via test explorer
+https://visualstudio.microsoft.com/
+
+Alternatively use MSBuild and MsTest to execute the solution via command line
+
+MSBuild.exe **MYPROJ**.sln 
+/p:outdir="Z:\output\\",OutputPath="Z:\output\\",webprojectoutputdir="Z:\output\\",configuration=DEBUG 
+/t:Clean;Build 
+
+MSTest /testcontainer:\**MYPROJ**.sln\Tests\Debug\proj.dll
 
 
 ## Contributing
